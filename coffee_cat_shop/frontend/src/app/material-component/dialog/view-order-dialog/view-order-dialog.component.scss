@@ -1,0 +1,209 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #e0f7fa, #e1bee7);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  /* Container and Header */
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(135deg, #ffffff, #f8f9fa);
+    position: relative;
+    animation: fadeIn 1s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+  }
+  
+  .header {
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 30px;
+    color: #1a73e8;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+  }
+  
+  .header:before {
+    content: '';
+    position: absolute;
+    bottom: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background-color: #1a73e8;
+    border-radius: 5px;
+  }
+  
+  /* Detail Info */
+  .detail-info p {
+    font-size: 16px;
+    color: #444;
+    transition: color 0.3s;
+  }
+  
+  .detail-info p strong {
+    color: #1a73e8;
+  }
+  
+  /* Product Info */
+  .product-info {
+    border-top: 3px solid #1a73e8;
+    margin-top: 25px;
+    padding-top: 25px;
+    animation: slideIn 0.8s ease-in-out;
+  }
+  
+  @keyframes slideIn {
+    from { transform: translateX(-100%); }
+    to { transform: translateX(0); }
+  }
+  
+  .product-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+    padding: 15px;
+    border-radius: 12px;
+    background-color: #f1f8ff;
+    box-shadow: 0 2px 10px rgba(26, 115, 232, 0.1);
+    transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s;
+    animation: productFadeIn 1s ease-in-out;
+  }
+  
+  @keyframes productFadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .product-item:hover {
+    background-color: #e0f2ff;
+    box-shadow: 0 4px 15px rgba(26, 115, 232, 0.2);
+    transform: translateY(-5px);
+  }
+  
+  .product-item img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-right: 20px;
+    border: 2px solid #1a73e8;
+    transition: transform 0.3s, filter 0.3s;
+  }
+  
+  .product-item:hover img {
+    transform: rotate(5deg);
+    filter: brightness(1.1);
+  }
+  
+  .product-details p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #555;
+    transition: color 0.3s;
+  }
+  
+  .product-details p strong {
+    color: #1a73e8;
+  }
+  
+  /* Customer Info */
+  .customer-info {
+    margin-top: 25px;
+  }
+  
+  .customer-info p {
+    font-size: 16px;
+    color: #444;
+    transition: color 0.3s;
+  }
+  
+  .customer-info p strong {
+    color: #1a73e8;
+  }
+  
+  /* Additional Info */
+  .additional-info {
+    margin-top: 25px;
+    padding-top: 25px;
+    border-top: 3px solid #1a73e8;
+    animation: slideUp 0.8s ease-in-out;
+  }
+  
+  @keyframes slideUp {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
+  }
+  
+  .additional-info p {
+    font-size: 16px;
+    color: #444;
+    transition: color 0.3s;
+  }
+  
+  .additional-info p.total {
+    font-size: 22px;
+    color: #1a73e8;
+    font-weight: bold;
+    margin-top: 20px;
+  }
+  
+  /* Close Button */
+  .close-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.3s;
+  }
+  
+  .close-button mat-icon {
+    font-size: 28px;
+    color: #1a73e8;
+    transition: color 0.3s, transform 0.3s;
+  }
+  
+  .close-button:hover mat-icon {
+    color: #0c47a1;
+    transform: rotate(90deg);
+  }
+  
+  /* Hover and Focus Effects */
+  .detail-info p:hover, .customer-info p:hover, .additional-info p:hover {
+    color: #1a73e8;
+  }
+  
+  .product-details p:hover {
+    color: #333;
+  }
+  
+  /* Additional Transitions */
+  .detail-info p, .customer-info p, .additional-info p {
+    transition: color 0.3s, transform 0.3s;
+    -webkit-transition: color 0.3s, transform 0.3s;
+    -moz-transition: color 0.3s, transform 0.3s;
+    -ms-transition: color 0.3s, transform 0.3s;
+    -o-transition: color 0.3s, transform 0.3s;
+}
+  
+  .detail-info p:hover, .customer-info p:hover, .additional-info p:hover {
+    transform: scale(1.05);
+  }
+  

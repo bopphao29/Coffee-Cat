@@ -1,0 +1,161 @@
+<!-- <link
+  href="https://fonts.googleapis.com/css?family=Open+Sans:400,700"
+  rel="stylesheet"
+/> -->
+
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+/>
+
+<div
+  class=""
+  style="
+    display: flex;
+    justify-content: space-between;
+    margin: 0px 50px 20px 50px;
+  "
+>
+  <div class="select">
+    <select (change)="onCategoryChange($event)">
+      <option [value]="-1">Danh mục</option>
+      <option *ngFor="let item of categotyList" [value]="item.id">
+        {{ item.name }}
+      </option>
+    </select>
+  </div>
+</div>
+
+<div class="card" *ngIf="!isFilter">
+  <ul class="listing">
+    <li
+      class="product"
+      *ngFor="let item of products"
+      style="background-color: rgb(255, 255, 255)"
+    >
+      <a class="img-wrapper" href="#">
+        <img
+          mat-card-image=""
+          [src]="item.image"
+          alt="2"
+          class="mat-mdc-card-image mdc-card__media"
+          width="100%"
+        />
+      </a>
+
+      <div class="info">
+        <div class="title">{{ item.name }}</div>
+        <div class="price">
+          {{ item.price | currency : "VND" : true : "1.0-0" }}
+        </div>
+      </div>
+
+      <div class="actions-wrapper">
+        <a
+          style="cursor: pointer"
+          (click)="viewProductDetail(item.id)"
+          class="add-btn wishlist"
+          >Chi tiết</a
+        >
+        <!-- <a (click)="addToCart()" class="add-btn cart">+ Thêm</a> -->
+        <a (click)="addToCart(item.id)" class="add-btn cart">+ Thêm</a>
+      </div>
+    </li>
+  </ul>
+</div>
+
+<div *ngIf="isFilter">
+  <div class="card">
+    <ul class="listing">
+      <li
+        class="product"
+        *ngFor="let item of paginatedProducts"
+        style="background-color: rgb(255, 255, 255)"
+      >
+        <a class="img-wrapper" href="#">
+          <img
+            mat-card-image=""
+            [src]="item.image"
+            alt="2"
+            class="mat-mdc-card-image mdc-card__media"
+            width="100%"
+          />
+        </a>
+
+        <div class="info">
+          <div class="title">{{ item.name }}</div>
+          <div class="price">
+            {{ item.price | currency : "VND" : true : "1.0-0" }}
+          </div>
+        </div>
+
+        <div class="actions-wrapper">
+          <a
+            style="cursor: pointer"
+            (click)="viewProductDetail(item.id)"
+            class="add-btn wishlist"
+            >Chi tiết</a
+          >
+          <!-- <a class="add-btn cart" (click)="addToCart()">+ Thêm</a> -->
+          <a (click)="addToCart(item.id)" class="add-btn cart">+ Thêm</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="card" *ngIf="!filterInput">
+  <div class="card">
+    <ul class="listing">
+      <li
+        class="product"
+        *ngFor="let item of filterProducts"
+        style="background-color: rgb(255, 255, 255)"
+      >
+        <a class="img-wrapper" href="#">
+          <img
+            mat-card-image=""
+            [src]="item.image"
+            alt="2"
+            class="mat-mdc-card-image mdc-card__media"
+            width="100%"
+          />
+        </a>
+
+        <div class="info">
+          <div class="title">{{ item.name }}</div>
+          <div class="price">
+            {{ item.price | currency : "VND" : true : "1.0-0" }}
+          </div>
+        </div>
+
+        <div class="actions-wrapper">
+          <a
+            style="cursor: pointer"
+            (click)="viewProductDetail(item.id)"
+            class="add-btn wishlist"
+            >Chi tiết</a
+          >
+          <!-- <a style="cursor: pointer" (click)="addToCart()" class="add-btn cart"
+            >+ Thêm</a
+          > -->
+          <a (click)="addToCart(item.id)" class="add-btn cart" style="cursor: pointer !important;">+ Thêm</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+<!-- 
+<div>
+  <div class="pagination">
+    <button (click)="prevPage()" [disabled]="currentPage === 1">Trước</button>
+    <span class="ml-1">Trang {{ currentPage }}/{{ totalPages }}</span>
+    <button
+      (click)="nextPage()"
+      class="ml-1"
+      [disabled]="currentPage === totalPages"
+    >
+      Sau
+    </button>
+  </div>
+</div> -->

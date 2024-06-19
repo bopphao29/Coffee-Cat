@@ -1,0 +1,126 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row fxLayout="row">
+    <span class="title-center">Đăng Ký</span>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-dialog-content class="mat-typography">
+  <form [formGroup]="signupForm">
+    <div fxFlex fxLayout="column">
+      <mat-form-field appearance="fill" fxFlex>
+        <mat-label>Số điện thoại</mat-label>
+        <input type="phone" matInput formControlName="phone" required />
+        <mat-error
+          *ngIf="
+            signupForm.controls.phone.touched &&
+            signupForm.controls.phone.invalid
+          "
+        >
+          <span *ngIf="signupForm.controls.phone.invalid"
+            >Không được bỏ trống</span
+          >
+          <span *ngIf="signupForm.controls.phone.pattern"
+            >Mật khẩu không hợp lệ
+          </span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill" fxFlex>
+        <mat-label>Họ và tên</mat-label>
+        <input matInput type="text" formControlName="fullname" required />
+        <mat-error
+          *ngIf="
+            signupForm.controls.fullname.touched &&
+            signupForm.controls.fullname.invalid
+          "
+        >
+          <span *ngIf="signupForm.controls.fullname.invalid"
+            >Không được bỏ trống</span
+          >
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" fxFlex>
+        <mat-label>Email</mat-label>
+        <input type="email" matInput formControlName="email" required />
+        <mat-error
+          *ngIf="
+            signupForm.controls.email.touched &&
+            signupForm.controls.email.invalid
+          "
+        >
+          <span *ngIf="signupForm.controls.email.invalid"
+            >Không được bỏ trống</span
+          >
+          <span *ngIf="signupForm.controls.email.pattern"
+            >Mật khẩu không hợp lệ
+          </span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill" fxFlex>
+        <mat-label>Địa chỉ</mat-label>
+        <input matInput type="text" formControlName="address" required />
+        <mat-error
+          *ngIf="
+            signupForm.controls.address.touched &&
+            signupForm.controls.address.invalid
+          "
+        >
+          <span *ngIf="signupForm.controls.address.invalid"
+            >Không được bỏ trống</span
+          >
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill" fxFlex>
+        <mat-label>Mật khẩu</mat-label>
+        <input type="password" matInput formControlName="password" required />
+        <mat-error
+          *ngIf="
+            signupForm.controls.password.touched &&
+            signupForm.controls.password.invalid
+          "
+        >
+          <span *ngIf="signupForm.controls.password.invalid"
+            >Không được bỏ trống</span
+          >
+          <span *ngIf="signupForm.controls.password.pattern"
+            >Mật khẩu không hợp lệ
+          </span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill" fxFlex>
+        <mat-label>Nhập lại mật khẩu</mat-label>
+        <input
+          type="confirmPassword"
+          matInput
+          formControlName="confirmPassword"
+          required
+        />
+        <mat-error
+          *ngIf="
+            signupForm.controls.confirmPassword.touched &&
+            signupForm.controls.confirmPassword.invalid
+          "
+        >
+          <span *ngIf="signupForm.controls.confirmPassword.invalid"
+            >Không được bỏ trống</span
+          >
+          <span *ngIf="signupForm.controls.confirmPassword.pattern"
+            >Mật khẩu không hợp lệ
+          </span>
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="center">
+  <button
+    mat-raised-button
+    color="primary"
+    type="submit"
+    (click)="handleSubmit()"
+    [disabled]="!(signupForm.valid && signupForm.dirty)"
+  >
+    Đăng ký
+  </button>
+  <button mat-raised-button mat-dialog-close color="secondary">Hủy</button>
+</mat-dialog-actions>

@@ -1,0 +1,104 @@
+<mat-card style="margin-bottom: 10px;"> 
+  <b><span>DANH SÁCH KHUYẾN MÃI</span></b>
+  <button
+    mat-flat-button
+    color="primary"
+    class="float-right"
+    (click)="handleAddAction()"
+  >
+    Thêm mới
+  </button>
+</mat-card>
+<mat-card>
+  <mat-form-field appearance="fill">
+    <mat-label>Tìm kiếm</mat-label>
+    <input type="text" matInput (keyup)="applyFilter($event)" #input />
+  </mat-form-field>
+</mat-card>
+<hr />
+<div class="responsive_table">
+  <table
+    mat-table
+    [dataSource]="dataSource"
+    class="mat-elevation-z8 custom-table"
+  >
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>TÊN</th>
+      <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="percent">
+      <th mat-header-cell *matHeaderCellDef>PHẦN TRĂM</th>
+      <td mat-cell *matCellDef="let element">{{ element.percent }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="fromDate">
+      <th mat-header-cell *matHeaderCellDef>TỪ NGÀY</th>
+      <td mat-cell *matCellDef="let element">{{ element.fromDate }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="toDate">
+      <th mat-header-cell *matHeaderCellDef>ĐẾN NGÀY</th>
+      <td mat-cell *matCellDef="let element">{{ element.toDate }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef>TRẠNG THÁI</th>
+      <td mat-cell *matCellDef="let element" (click)="toggleStatus(element)">
+        <ng-container *ngIf="!element.editing">
+          {{ element.status === 1 ? "Đang áp dụng" : "Không áp dụng" }}
+        </ng-container>
+        <ng-container *ngIf="element.editing">
+          <mat-form-field appearance="fill" style="width: 200px">
+            <mat-select
+              [(ngModel)]="element.status"
+              (selectionChange)="applyPromotion(element)"
+            >
+              <mat-option
+                *ngFor="
+                  let option of [
+                    { value: 1, viewValue: 'Áp dụng' },
+                    { value: 0, viewValue: 'Không áp dụng' }
+                  ]
+                "
+                [value]="option.value"
+              >
+                {{ option.viewValue }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </ng-container>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="edit">
+      <th mat-header-cell *matHeaderCellDef class="action-link">THAO TÁC</th>
+      <td mat-cell *matCellDef="let element">
+        <button
+          mat-icon-button
+          color="primary"
+          matTooltip="Sửa"
+          (click)="handleEditAction(element)"
+        >
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button
+          mat-icon-button
+          color="primary"
+          matTooltip="Xóa"
+          (click)="handleDeleteAction(element)"
+        >
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <!-- Thiết lập hàng và cột -->
+    <tr mat-header-row *matHeaderRowDef="displayedColums; sticky: true"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColums"></tr>
+  </table>
+  <mat-paginator
+    [pageSizeOptions]="[5, 10, 25, 100]"
+    showFirstLastButtons
+  ></mat-paginator>
+</div>

@@ -1,0 +1,69 @@
+<div class="checkout-container">
+  <h2>Thông tin đặt hàng</h2>
+  <form (ngSubmit)="placeOrder()" #checkoutForm="ngForm">
+    <div class="form-group">
+      <label for="name">Họ và tên:</label>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        [(ngModel)]="fullname"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="phone">Số điện thoại:</label>
+      <input type="tel" id="phone" name="phone" [(ngModel)]="phone" required />
+    </div>
+    <div class="form-group">
+      <label for="address">Địa chỉ giao hàng:</label>
+      <!-- <textarea
+        id="address"
+        name="address"
+        [(ngModel)]="address"
+        required
+      ></textarea> -->
+      <input type="text" id="address" name="address" [(ngModel)]="address" required />
+    </div>
+    <div class="form-group">
+      <label for="paymentMethod">Phương thức thanh toán:</label>
+      <select
+        id="paymentMethod"
+        name="paymentMethod"
+        [(ngModel)]="paymentMethod"
+        required
+      >
+        <option value="Thanh toán khi nhận hàng">
+          Thanh toán khi nhận hàng
+        </option>
+        <option value="Chuyển khoản">Chuyển khoản</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="note">Ghi chú:</label>
+      <textarea id="note" name="note" [(ngModel)]="note"></textarea>
+    </div>
+    <div class="form-group">
+      <label>Sản phẩm đã đặt:</label>
+      <ul>
+        <li *ngFor="let product of productDetails">
+          <div class="product-item">
+            <img [src]="product.image" alt="Product Image" />
+            <div>
+              <p>{{ product.name }}</p>
+              <p>{{ product.price | currency : "VND" }}</p>
+              <p>Số lượng: {{ product.quantity }}</p>
+              <p>Tổng tiền: {{ product.total | currency : "VND" }}</p>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="form-group">
+      <label>Tổng thanh toán:</label>
+      <p>{{ total | currency : "VND" }}</p>
+    </div>
+    <button type="submit">Xác nhận đặt hàng</button>
+  </form>
+</div>

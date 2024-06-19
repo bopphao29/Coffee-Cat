@@ -1,0 +1,71 @@
+<body>
+  <mat-card>
+    <b><span>Thống kê</span></b>
+  </mat-card>
+  <br />
+  <div class="row">
+    <div class="column">
+      <div class="card">
+        <div class="container">
+          <h2 class="title">Danh mục</h2>
+          <h1 class="title">{{ data?.categories || 0 }}</h1>
+          <p>
+            <button class="button" [routerLink]="['/category']">
+              Chi tiết
+            </button>
+          </p>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="column">
+      <div class="card">
+        <div class="container">
+          <h2 class="title">Khuyến mãi</h2>
+          <h1 class="title">{{ data?.promotions || 0 }}</h1>
+          <p>
+            <button class="button" [routerLink]="['/promotion']">
+              Chi tiết
+            </button>
+          </p>
+        </div>
+      </div>
+    </div> -->
+    <div class="column">
+      <div class="card">
+        <div class="container">
+          <h2 class="title">Sản phẩm</h2>
+          <h1 class="title">{{ data?.products || 0 }}</h1>
+          <p>
+            <button class="button" [routerLink]="['/product']">Chi tiết</button>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="column">
+      <div class="card">
+        <div class="container">
+          <h2 class="title">Đơn hàng</h2>
+          <h1 class="title">{{ data?.orders || 0 }}</h1>
+          <p>
+            <button class="button" [routerLink]="['/order']">Chi tiết</button>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="column">
+      <div class="card">
+        <div class="container">
+          <h2 class="title">Tài khoản</h2>
+          <h1 class="title">{{ data?.users || 0 }}</h1>
+          <p>
+            <button class="button" [routerLink]="['/user']">Chi tiết</button>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+<!-- <div class="canvas-container">
+  <canvas #canvasElement width="800" height="600"></canvas>
+</div> -->

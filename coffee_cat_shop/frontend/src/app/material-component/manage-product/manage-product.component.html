@@ -1,0 +1,89 @@
+<mat-card>
+  <b><span>DANH SÁCH SẢN PHẨM</span></b>
+  <button
+    mat-flat-button
+    color="primary"
+    class="float-right"
+    (click)="handleAddAction()"
+  >
+    Nhập hàng
+  </button>
+</mat-card>
+<mat-card>
+  <mat-form-field appearance="fill">
+    <mat-label>Tìm kiếm</mat-label>
+    <input type="text" matInput (keyup)="applyFilter($event)" #input />
+  </mat-form-field>
+</mat-card>
+<hr />
+<div class="responsive_table">
+  <table
+    mat-table
+    [dataSource]="dataSource"
+    class="mat-elevation-z8 custom-table"
+  >
+    <ng-container matColumnDef="image">
+      <th mat-header-cell *matHeaderCellDef>HÌNH ẢNH</th>
+      <td mat-cell *matCellDef="let element">
+        <img width="150px" [src]="element.image" alt="" />
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>TÊN</th>
+      <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="price">
+      <th mat-header-cell *matHeaderCellDef>GIÁ BÁN</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.price | currency : "VND" : true : "1.0-0" }}
+      </td>
+    </ng-container>
+
+     <!-- <ng-container matColumnDef="salePrice">
+      <th mat-header-cell *matHeaderCellDef>GIÁ SALE</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.salePrice | currency : "VND" : true : "1.0-0" }}
+      </td>
+    </ng-container> -->
+
+    <ng-container matColumnDef="stockQuantity">
+      <th mat-header-cell *matHeaderCellDef>SL CÓ</th>
+      <td mat-cell *matCellDef="let element">{{ element.stockQuantity }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="createdAt">
+      <th mat-header-cell *matHeaderCellDef>NGÀY TẠO</th>
+      <td mat-cell *matCellDef="let element">{{ element.createdAt }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="edit">
+      <th mat-header-cell *matHeaderCellDef class="action-link">THAO TÁC</th>
+      <td mat-cell *matCellDef="let element">
+        <button
+          mat-icon-button
+          color="primary"
+          matTooltip="Sửa"
+          (click)="handleEditAction(element)"
+        >
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button
+          mat-icon-button
+          color="primary"
+          matTooltip="Xóa"
+          (click)="handleDeleteAction(element)"
+        >
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+  <mat-paginator
+    [pageSizeOptions]="[5, 10, 25, 100]"
+    showFirstLastButtons
+  ></mat-paginator>
+</div>

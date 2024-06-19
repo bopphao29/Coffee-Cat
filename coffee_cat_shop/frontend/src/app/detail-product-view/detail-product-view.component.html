@@ -1,0 +1,72 @@
+<!-- <div class="container mt-5">
+    <div class="card">
+        <ng-container *ngFor="let entry of productEntries">
+            <ng-container [ngSwitch]="entry[0]">
+              <h5 class="card-title" *ngSwitchCase="'name'">Sản phẩm: {{ entry[1] }}</h5>
+              <p class="card-text" *ngSwitchCase="'price'">Giá tiền: {{ entry[1] | currency }}</p>
+              <p class="card-text" *ngSwitchCase="'description'">Mô tả: {{ entry[1] }}</p>
+              <img *ngSwitchCase="'image'" width="200px" [src]="entry[1]" alt="{{ productEntries[1][1] }}" class="img-fluid">
+            </ng-container>
+          </ng-container>
+      <button class="btn btn-secondary" (click)="goBack()">Go Back</button>
+    </div>
+  </div>
+   -->
+
+   <html>
+
+   <body>
+       <main>
+           <div class="card">
+   
+               <ng-container *ngIf="product">
+                   <ng-container>
+                       <div class="card__title">
+                           <div class="icon">
+                               <a href="#"><i class="fa fa-arrow-left"></i></a>
+                           </div>
+                           <h3>SẢN PHẨM</h3>
+                       </div>
+                       <div class="card__body">
+                           <div class="half">
+                               <div class="featured_text">
+                                   <h1>{{product.name}}</h1>
+                                   <!-- <p class="sub">Office Chair</p> -->
+                                   <p class="price">{{product.price}} VNĐ</p>
+                               </div>
+                               <div class="image">
+                                   <img style="width: 250px; height: 250px; " [src]="product.image" alt="">
+                               </div>
+                           </div>
+                           <div class="half">
+                               <div class="description">
+                                   <p>Mô tả: {{product.description}}</p>
+                               </div>
+                               <!-- <span class="stock"><i class="fa fa-pen"></i> Đánh giá</span>
+                               <div class="reviews">
+                                   <ul class="stars">
+                                       <li><i class="fa fa-star"></i></li>
+                                       <li><i class="fa fa-star"></i></li>
+                                       <li><i class="fa fa-star"></i></li>
+                                       <li><i class="fa fa-star"></i></li>
+                                       <li><i class="fa fa-star-o"></i></li>
+                                   </ul>
+                               </div> -->
+                           </div>
+                       </div>
+                       <div class="card__footer">
+                           <div class="recommend">
+                               <p>Sản phẩm thuộc</p>
+                               <h3>Coffee Cat</h3>
+                           </div>
+                           <div class="action">
+                               <span >Hệ thống bán đồ uống</span>
+                           </div>
+                       </div>
+                   </ng-container>
+               </ng-container>
+           </div>
+       </main>
+   </body>
+   
+   </html>

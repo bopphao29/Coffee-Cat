@@ -1,0 +1,33 @@
+<div class="container">
+    <h2 class="header">Chi Tiết Đơn Hàng</h2>
+    <div class="detail-info">
+      <p><strong>Mã Đơn Hàng:</strong> {{ data.orderCode }}</p>
+      <p><strong>Ngày Đặt:</strong> {{ data.orderDate }}</p>
+    </div>
+    <div class="product-info" *ngFor="let product of data.productDetails">
+      <div class="product-item">
+        <img [src]="product.image" alt="Product Image" />
+        <div class="product-details">
+          <p><strong>Tên Sản Phẩm:</strong> {{ product.name }}</p>
+          <p><strong>Giá:</strong> {{ product.price | currency : "VND" }}</p>
+          <p><strong>Số Lượng:</strong> {{ product.quantity }}</p>
+          <p><strong>Thành Tiền:</strong> {{ product.total | currency : "VND" }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="customer-info">
+      <p><strong>Thông Tin Người Mua:</strong></p>
+      <p><strong>Họ và Tên:</strong> {{ data.fullname }}</p>
+      <p><strong>Số Điện Thoại:</strong> {{ data.phone }}</p>
+      <p><strong>Địa Chỉ Giao Hàng:</strong> {{ data.address }}</p>
+      <p><strong>Phương Thức Thanh Toán:</strong> {{ data.paymentMethod }}</p>
+    </div>
+    <div class="additional-info">
+      <p><strong>Ghi Chú:</strong> {{ data.note || 'Không có ghi chú' }}</p>
+      <p class="total"><strong>Tổng Tiền:</strong> {{ data.totalAmount | currency : "VND" }}</p>
+    </div>
+    <button mat-icon-button class="close-button" (click)="closeDialog()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  

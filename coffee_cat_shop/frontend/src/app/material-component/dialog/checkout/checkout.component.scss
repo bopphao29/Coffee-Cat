@@ -1,0 +1,114 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+}
+
+.checkout-container {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  font-weight: bold;
+  display: block;
+}
+
+input[type="text"],
+input[type="tel"],
+textarea,
+select {
+  width: calc(100% - 22px);
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-top: 5px;
+  transition: border-color 0.3s ease;
+}
+
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url('data:image/svg+xml;utf8,<svg fill="%23333" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024"><path d="M512 704L222.2 416h579.6L512 704zM222.2 608L512 320l289.8 288H222.2z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+}
+
+textarea {
+  height: 80px;
+}
+
+button[type="submit"] {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: transform 0.2s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #45a049;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.product-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  transition: transform 0.2s ease;
+}
+
+.product-item img {
+  width: 100px;
+  border-radius: 5px;
+  margin-right: 20px;
+  transition: box-shadow 0.3s ease;
+}
+
+.product-item div {
+  flex: 1;
+}
+
+.product-item p {
+  margin: 5px 0;
+}
+
+h2 {
+  color: #333;
+  font-size: 24px;
+  text-shadow: 1px 1px 1px #ccc;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: #4caf50;
+  box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+}
+
+.product-item:hover {
+  transform: scale(1.02);
+}
+
+.product-item img:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}

@@ -1,0 +1,63 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row fxLayout="row">
+    <span class="title-center">Đăng nhập</span>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-dialog-content class="mat-typography">
+  <form [formGroup]="loginForm">
+    <div fxFlex fxLayout="column">
+      <mat-form-field appearance="fill" fxFlex>
+        <mat-label>Số điện thoại</mat-label>
+        <input
+          matInput
+          type="tel"
+          placeholder="Nhập số điện thoại"
+          formControlName="phone"
+          required
+        />
+        <mat-error
+          *ngIf="loginForm.controls.phone.touched && loginForm.controls.phone.invalid"
+        >
+          <span *ngIf="loginForm.controls.phone.invalid">Số điện thoại phải điền đủ là 10 số</span>
+          <span *ngIf="loginForm.controls.phone.pattern">Số điện thoại không hợp lệ</span>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" fxFlex>
+        <mat-label>Mật khẩu</mat-label>
+        <input
+          type="password"
+          placeholder="Nhập password"
+          matInput
+          formControlName="password"
+          required
+        />
+        <mat-error
+          *ngIf="
+            loginForm.controls.password.touched &&
+            loginForm.controls.password.invalid
+          "
+        >
+          <span *ngIf="loginForm.controls.password.invalid"
+            >Không được bỏ trống</span
+          >
+          <span *ngIf="loginForm.controls.password.pattern"
+            >Mật khẩu không hợp lệ
+          </span>
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="center">
+  <button
+    mat-raised-button
+    color="primary"
+    type="submit"
+    (click)="handleSubmit()"
+    [disabled]="!(loginForm.valid && loginForm.dirty)"
+  >
+    Đăng nhập
+  </button>
+</mat-dialog-actions>

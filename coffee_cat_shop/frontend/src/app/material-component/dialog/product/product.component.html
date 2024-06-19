@@ -1,0 +1,136 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row fxLayout="row">
+    <span class="title-center">{{ dialogAction.action }}Nhập hàng</span>
+  </mat-toolbar-row>
+</mat-toolbar>
+<mat-dialog-content class="mat-typography">
+  <form [formGroup]="productForm">
+    <div fxFlex fxLayout="column">
+      <div fxLayout="row wrap">
+        <mat-form-field>
+          <div>
+            <mat-toolbar>
+              <button mat-flat-button class="ml-3" color="primary">
+                Chọn ảnh
+              </button>
+              <input
+                matInput
+                [value]="selectedFileNames.length ? selectedFileNames : '.....'"
+                formControlName="image"
+              />
+            </mat-toolbar>
+
+            <input
+              type="file"
+              id="fileInput"
+              name="fileInput"
+              accept="image/*"
+              multiple
+              width="150px"
+              (change)="selectFiles($event)"
+              formControlName="image"
+            />
+          </div>
+        </mat-form-field>
+        <div>
+          <img
+            *ngFor="let preview of previews"
+            [src]="preview"
+            class="preview"
+          />
+        </div>
+
+        <div *ngIf="message.length" class="message">
+          <ul *ngFor="let msg of message; let i = index">
+            <li>{{ msg }}</li>
+          </ul>
+        </div>
+      </div>
+
+      <div fxLayout="row wrap">
+        <mat-form-field appearance="fill" fxFlex>
+          <mat-label>Danh mục</mat-label>
+          <mat-select formControlName="categoryId">
+            <mat-option
+              *ngFor="let category of categorys"
+              [value]="category.id"
+              >{{ category.name }}</mat-option
+            >
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="fill" fxFlex>
+          <mat-label>Tên</mat-label>
+          <input formControlName="name" matInput required />
+          <mat-error
+            *ngIf="
+              productForm.controls.name.touched &&
+              productForm.controls.name.invalid
+            "
+          >
+            <span *ngIf="productForm.controls.name.errors.required"
+              >Bắt buộc</span
+            >
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div fxLayout="row wrap">
+        <mat-form-field appearance="fill" fxFlex>
+          <mat-label>Giá bán</mat-label>
+          <input formControlName="price" matInput required />
+          <mat-error
+            *ngIf="
+              productForm.controls.price.touched &&
+              productForm.controls.price.invalid
+            "
+          >
+            <span *ngIf="productForm.controls.price.errors.required"
+              >Bắt buộc</span
+            >
+            <span *ngIf="productForm.controls.price.errors.pattern"
+              >Không hợp lệ</span
+            >
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill" fxFlex>
+          <mat-label>Số lượng sẽ bán</mat-label>
+          <input formControlName="stockQuantity" matInput required />
+          <mat-error
+            *ngIf="
+              productForm.controls.stockQuantity.touched &&
+              productForm.controls.stockQuantity.invalid
+            "
+          >
+            <span *ngIf="productForm.controls.stockQuantity.errors.required"
+              >Bắt buộc</span
+            >
+            <span *ngIf="productForm.controls.stockQuantity.errors.pattern"
+              >Không hợp lệ</span
+            >
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+
+      <div fxLayout="row wrap">
+        <mat-form-field appearance="fill" fxFlex>
+          <mat-label>Mô tả</mat-label>
+          <input formControlName="description" matInput required />
+        </mat-form-field>
+      </div>
+    </div>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="center">
+  <button
+    mat-raised-button
+    color="primary"
+    type="submit"
+    (click)="handleSubmit()"
+    [disabled]="!(productForm.valid && productForm.dirty)"
+  >
+    {{ action }}
+  </button>
+  <button mat-raised-button color="secondary" mat-dialog-close>Hủy</button>
+</mat-dialog-actions>

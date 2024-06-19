@@ -1,0 +1,33 @@
+.float-right {
+    float: right;
+}
+
+mat-card {
+    padding: 20px;
+}
+
+table {
+    width: 100%;
+}
+
+.custom-table {
+    border-collapse: collapse;
+    border: 1px solid #ddd;
+    /* Thêm border cho bảng */
+}
+
+.custom-table th,
+.custom-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.custom-table th {
+    font-weight: bold;
+    color: #000;
+}
+
+.custom-table tr:hover {
+    background-color: #f0f8ff;
+    /* Màu nền xanh da trời nhạt khi hover */
+}

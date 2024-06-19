@@ -1,0 +1,108 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row fxLayout="row">
+    <span class="title-center">{{ dialogAction.action }} Khuyến mãi</span>
+  </mat-toolbar-row>
+</mat-toolbar>
+<mat-dialog-content class="mat-typography">
+  <form [formGroup]="promotionForm" fxLayout="column">
+    <div fxLayout="row" fxLayoutGap="20px">
+      <mat-form-field appearance="fill" fxFlex="50">
+        <mat-label>Tên</mat-label>
+        <input formControlName="name" matInput required />
+        <mat-error
+          *ngIf="
+            promotionForm.controls.name.touched &&
+            promotionForm.controls.name.invalid
+          "
+        >
+          <span *ngIf="promotionForm.controls.name.errors.required"
+            >Bắt buộc</span
+          >
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill" fxFlex="50">
+        <mat-label>Phần trăm</mat-label>
+        <input formControlName="percent" matInput type="number" required />
+        <mat-error
+          *ngIf="
+            promotionForm.controls.percent.touched &&
+            promotionForm.controls.percent.invalid
+          "
+        >
+          <span *ngIf="promotionForm.controls.percent.errors.required"
+            >Bắt buộc</span
+          >
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div fxLayout="row" fxLayoutGap="20px">
+      <mat-form-field appearance="fill" fxFlex="50">
+        <mat-label>Từ ngày</mat-label>
+        <input
+          formControlName="fromDate"
+          matInput
+          [matDatepicker]="pickerFrom"
+          required
+        />
+        <mat-datepicker-toggle
+          matSuffix
+          [for]="pickerFrom"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #pickerFrom></mat-datepicker>
+        <mat-error
+          *ngIf="
+            promotionForm.controls.fromDate.touched &&
+            promotionForm.controls.fromDate.invalid
+          "
+        >
+          <span *ngIf="promotionForm.controls.fromDate.errors.required"
+            >Bắt buộc</span
+          >
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill" fxFlex="50">
+        <mat-label>Đến ngày</mat-label>
+        <input
+          formControlName="toDate"
+          matInput
+          [matDatepicker]="pickerTo"
+          required
+        />
+        <mat-datepicker-toggle
+          matSuffix
+          [for]="pickerTo"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #pickerTo></mat-datepicker>
+        <mat-error
+          *ngIf="
+            promotionForm.controls.toDate.touched &&
+            promotionForm.controls.toDate.invalid
+          "
+        >
+          <span *ngIf="promotionForm.controls.toDate.errors.required"
+            >Bắt buộc</span
+          >
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div fxLayout="row" fxLayoutGap="20px">
+      <mat-form-field appearance="fill" fxFlex="100">
+        <mat-label>Mô tả</mat-label>
+        <input formControlName="description" matInput />
+      </mat-form-field>
+    </div>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="center">
+  <button
+    mat-raised-button
+    color="primary"
+    type="submit"
+    (click)="handleSubmit()"
+    [disabled]="!(promotionForm.valid && promotionForm.dirty)"
+  >
+    {{ action }}
+  </button>
+  <button mat-raised-button color="secondary" mat-dialog-close>Hủy</button>
+</mat-dialog-actions>
